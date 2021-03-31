@@ -80,5 +80,16 @@
       "description": "SAPUI5 Test Resources"
     }
   ],
+  "headerWhiteList": [
+		"objecttype",
+		"objectkey",
+		"MarkForDeletion",
+		"documentType",
+		"documentNumber",
+		"documentVersion",
+		"documentPart",
+		"semanticobjecttype"
+
+	],
   "sendWelcomeFileRedirect": true
 }

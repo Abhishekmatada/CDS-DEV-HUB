@@ -5,5 +5,13 @@ jQuery.sap.require("sap.ui.generic.app.AppComponent");
 sap.ui.generic.app.AppComponent.extend("ZAB_DEVHUB2_VER2.Component", {
 	metadata: {
 		"manifest": "json"
+	},
+	dependencies: {
+		libs: ["sap.m",
+			"sap.se.mi.plm.lib.attachmentservice"
+		],
+		components: [
+			"sap.se.mi.plm.lib.attachmentservice.attachment.components.stcomponent"
+		]
 	}
 });
