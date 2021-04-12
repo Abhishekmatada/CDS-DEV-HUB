@@ -1,5 +1,5 @@
 {
-	"welcomeFile": "/webapp/test/flpSandbox.html",
+	"welcomeFile": "/test/flpSandbox.html",
 	"routes": [{
 		"path": "/sap/opu/odata",
 		"target": {
@@ -9,7 +9,7 @@
 		},
 		"description": "D01"
 	}, {
-		"path": "/webapp/resources/sap/se/mi/plm/lib/attachmentservice",
+		"path": "/resources/sap/se/mi/plm/lib/attachmentservice",
 		"target": {
 			"type": "destination",
 			"name": "D01",
@@ -17,14 +17,14 @@
 		},
 		"description": "Case Reusable for PHD Project"
 	}, {
-		"path": "/webapp/resources/sap/s4h/cfnd/featuretoggle",
+		"path": "/resources/sap/s4h/cfnd/featuretoggle",
 		"target": {
 			"type": "destination",
 			"name": "D01",
 			"entryPath": "/sap/bc/ui5_ui5/sap/FEATURETOGGLES1"
 		},
 		"description": "Case Reusable for PHD Project"
-	},{
+	}, {
 		"path": "/sap/bc/lrep",
 		"target": {
 			"type": "destination",
@@ -60,7 +60,7 @@
 		},
 		"description": "Subscribed Fiori LaunchPad"
 	}, {
-		"path": "/webapp/resources",
+		"path": "/resources",
 		"target": {
 			"type": "service",
 			"name": "sapui5",
@@ -69,7 +69,7 @@
 		},
 		"description": "SAPUI5 Resources"
 	}, {
-		"path": "/webapp/test-resources",
+		"path": "/test-resources",
 		"target": {
 			"type": "service",
 			"name": "sapui5",
@@ -87,14 +87,7 @@
 		},
 		"description": "SAPUI5 Test Resources"
 	}],
-	"headerWhiteList": [
-		"objecttype",
-		"objectkey",
-		"MarkForDeletion",
-		"documentType",
-		"documentNumber",
-		"documentVersion",
-		"documentPart",
+	"headerWhiteList": ["objecttype", "objectkey", "MarkForDeletion", "documentType", "documentNumber", "documentVersion", "documentPart",
 		"semanticobjecttype"
 	],
 	"sendWelcomeFileRedirect": true

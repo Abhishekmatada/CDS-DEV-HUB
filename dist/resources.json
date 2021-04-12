@@ -1,0 +1,43 @@
+{
+    "resources": [
+        {
+            "name": "annotations/annotations.xml"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "localService/ZAB_C_DEVHUB_HD4_CDS_VAN.xml"
+        },
+        {
+            "name": "localService/flpSandbox.html"
+        },
+        {
+            "name": "localService/mockserver.js"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "model/formatter.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "i18n/ListReport/ZAB_C_DEVHUB_HD4/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "neo-app.json"
+        }
+    ]
+}

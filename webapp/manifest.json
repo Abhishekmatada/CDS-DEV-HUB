@@ -80,10 +80,19 @@
 				"sap.suite.ui.generic.template": {},
 				"sap.ui.layout": {},
 				"sap.ushell": {},
-				"sap.collaboration": {},
-				"sap.se.mi.plm.lib.attachmentservice": {}
+				"sap.collaboration": {}
 			},
-			"components": {}
+			"components": {
+				"sap.se.mi.plm.lib.attachmentservice.attachment.components.stcomponent": {
+					"lazy": true
+				}
+			}
+		},
+		"componentUsages": {
+			"attachmentReuseComponent": {
+				"name": "sap.se.mi.plm.lib.attachmentservice.attachment.components.stcomponent",
+				"settings": {}
+			}
 		},
 		"models": {
 			"i18n": {
@@ -141,12 +150,12 @@
 						"embeddedComponents": {
 							"simple::Attachments": {
 								"id": "simple::Attachments",
-								"componentName": "sap.se.mi.plm.lib.attachmentservice.attachment.components.stcomponent",
+								"componentUsage": "attachmentReuseComponent",
 								"title": "{{Attachments}}",
 								"settings": {
 									"mode": "{= ${ui>/editable}?'C':'D'}",
 									"objectType": "ZAB_HUBATA",
-									"objectKey": "{parts:[{path:'zt_name'},{path:'DraftUUID'}],formatter:'ZAB_DEVHUB1_VER2.model.formatter'}"
+									"objectKey": "{parts:[{path:'zt_name'},{path:'DraftUUID'}],formatter:'ZAB_DEVHUB1_VER2.model.formatter.returnAttachmentKey'}"
 								}
 							}
 						},
@@ -166,5 +175,9 @@
 	},
 	"sap.platform.hcp": {
 		"uri": ""
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zab_dh2/webapp",
+		"_version": "1.1.0"
 	}
 }

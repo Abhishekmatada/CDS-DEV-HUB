@@ -10,7 +10,8 @@
     "excludedFolders": [
       "test"
     ],
-    "buildRequired": true
+    "buildRequired": true,
+    "lastBuildDateTime": "Mon, 05 Apr 2021 17:59:21 GMT"
   },
   "generation": [
     {
@@ -49,5 +50,9 @@
       "xml": "fioriXmlAnalysis",
       "js": "fioriJsValidator"
     }
+  },
+  "deploy": {
+    "destination": "D01",
+    "name": "ZAB_DH2"
   }
 }

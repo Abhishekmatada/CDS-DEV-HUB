@@ -1,0 +1,303 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="ZAB_C_DEVHUB_HD4_CDS" xml:lang="en" sap:schema-version="1">
+            <EntityType Name="I_DraftAdministrativeDataType" sap:label="Draft Administration Data" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DraftUUID"/>
+                </Key>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Draft (Technical ID)"/>
+                <Property Name="DraftEntityType" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Draft Entity ID"/>
+                <Property Name="CreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
+                <Property Name="CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="CreatedByUserDescription" sap:label="Draft Created By"/>
+                <Property Name="LastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
+                <Property Name="LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="LastChangedByUserDescription" sap:label="Draft Last Changed By"/>
+                <Property Name="DraftAccessType" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Draft Access Type"/>
+                <Property Name="ProcessingStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft In Process Since"/>
+                <Property Name="InProcessByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="InProcessByUserDescription" sap:label="Draft In Process By"/>
+                <Property Name="DraftIsKeptByUser" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Is Kept By User"/>
+                <Property Name="EnqueueStartDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Locked Since"/>
+                <Property Name="DraftIsCreatedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Created By Me"/>
+                <Property Name="DraftIsLastChangedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft Last Changed By Me"/>
+                <Property Name="DraftIsProcessedByMe" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Draft In Process By Me"/>
+                <Property Name="CreatedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Created By (Description)"/>
+                <Property Name="LastChangedByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft Last Changed By (Description)"/>
+                <Property Name="InProcessByUserDescription" Type="Edm.String" MaxLength="80" sap:label="Draft In Process By (Description)"/>
+            </EntityType>
+            <EntityType Name="ZAB_C_DEVHUB_HD4Type" sap:label="CV for Header DEV HUB ver 2" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="zt_name"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Activation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="zt_name" Type="Edm.String" Nullable="false" MaxLength="50" sap:display-format="UpperCase" sap:label="Topic name" sap:quickinfo="Header level Topic segment"/>
+                <Property Name="zt_segment" Type="Edm.String" sap:label="Topic segment" sap:quickinfo="Header level Topic name"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZAB_C_DEVHUB_HD4_CDS.assoc_668D6AC897131A4942DA9265E9E64DD8" FromRole="FromRole_assoc_668D6AC897131A4942DA9265E9E64DD8" ToRole="ToRole_assoc_668D6AC897131A4942DA9265E9E64DD8"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZAB_C_DEVHUB_HD4_CDS.assoc_245F77D463CEFB00CAE5A025D32895F0" FromRole="FromRole_assoc_245F77D463CEFB00CAE5A025D32895F0" ToRole="ToRole_assoc_245F77D463CEFB00CAE5A025D32895F0"/>
+                <NavigationProperty Name="to_items" Relationship="ZAB_C_DEVHUB_HD4_CDS.assoc_B998AF0FF5AA42BFD6231EC91769D853" FromRole="FromRole_assoc_B998AF0FF5AA42BFD6231EC91769D853" ToRole="ToRole_assoc_B998AF0FF5AA42BFD6231EC91769D853"/>
+            </EntityType>
+            <EntityType Name="ZAB_C_DEVHUB_IT4Type" sap:label="CV for Item DEV HUB ver 2" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="zuniqnum"/>
+                    <PropertyRef Name="zt_name"/>
+                    <PropertyRef Name="DraftUUID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Preparation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Validation_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="zuniqnum" Type="Edm.Int16" Nullable="false" sap:label="Sub Topic num" sap:quickinfo="unique number for sub topic/item level" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="zt_name" Type="Edm.String" Nullable="false" MaxLength="50" sap:display-format="UpperCase" sap:label="Topic name" sap:quickinfo="Header level Topic segment"/>
+                <Property Name="zsubtopic" Type="Edm.String" sap:label="SUB TOPIC" sap:quickinfo="sub topic at item level"/>
+                <Property Name="ztopic_infotype" Type="Edm.String" sap:label="TOPIC INFO TYPE" sap:quickinfo="Type of information for the concept"/>
+                <Property Name="zuser_id" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="User Name" sap:quickinfo="ABAP System Field: Name of Current User"/>
+                <Property Name="DraftUUID" Type="Edm.Guid" Nullable="false" sap:label="Key"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On"/>
+                <Property Name="ParentDraftUUID" Type="Edm.Guid" sap:label="Key" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has active" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Has Draft" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:display-format="UpperCase" sap:label="Is active" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="to_header" Relationship="ZAB_C_DEVHUB_HD4_CDS.assoc_B998AF0FF5AA42BFD6231EC91769D853" FromRole="ToRole_assoc_B998AF0FF5AA42BFD6231EC91769D853" ToRole="FromRole_assoc_B998AF0FF5AA42BFD6231EC91769D853"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="ZAB_C_DEVHUB_HD4_CDS.assoc_423F1558871634BEAB4FBEB33DE29140" FromRole="FromRole_assoc_423F1558871634BEAB4FBEB33DE29140" ToRole="ToRole_assoc_423F1558871634BEAB4FBEB33DE29140"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="ZAB_C_DEVHUB_HD4_CDS.assoc_17F528AD10CFAA4A854046834D2279C7" FromRole="FromRole_assoc_17F528AD10CFAA4A854046834D2279C7" ToRole="ToRole_assoc_17F528AD10CFAA4A854046834D2279C7"/>
+            </EntityType>
+            <ComplexType Name="ValidationFunctionResult">
+                <Property Name="IsValid" Type="Edm.Boolean" sap:label="Is valid"/>
+            </ComplexType>
+            <Association Name="assoc_245F77D463CEFB00CAE5A025D32895F0" sap:content-version="1">
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" Multiplicity="1" Role="FromRole_assoc_245F77D463CEFB00CAE5A025D32895F0"/>
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" Multiplicity="0..1" Role="ToRole_assoc_245F77D463CEFB00CAE5A025D32895F0"/>
+            </Association>
+            <Association Name="assoc_B998AF0FF5AA42BFD6231EC91769D853" sap:content-version="1">
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" Multiplicity="1" Role="FromRole_assoc_B998AF0FF5AA42BFD6231EC91769D853"/>
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" Multiplicity="*" Role="ToRole_assoc_B998AF0FF5AA42BFD6231EC91769D853"/>
+            </Association>
+            <Association Name="assoc_668D6AC897131A4942DA9265E9E64DD8" sap:content-version="1">
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" Multiplicity="1" Role="FromRole_assoc_668D6AC897131A4942DA9265E9E64DD8"/>
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_668D6AC897131A4942DA9265E9E64DD8"/>
+            </Association>
+            <Association Name="assoc_423F1558871634BEAB4FBEB33DE29140" sap:content-version="1">
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" Multiplicity="1" Role="FromRole_assoc_423F1558871634BEAB4FBEB33DE29140"/>
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_423F1558871634BEAB4FBEB33DE29140"/>
+            </Association>
+            <Association Name="assoc_17F528AD10CFAA4A854046834D2279C7" sap:content-version="1">
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" Multiplicity="1" Role="FromRole_assoc_17F528AD10CFAA4A854046834D2279C7"/>
+                <End Type="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" Multiplicity="0..1" Role="ToRole_assoc_17F528AD10CFAA4A854046834D2279C7"/>
+            </Association>
+            <EntityContainer Name="ZAB_C_DEVHUB_HD4_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="I_DraftAdministrativeData" EntityType="ZAB_C_DEVHUB_HD4_CDS.I_DraftAdministrativeDataType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="ZAB_C_DEVHUB_HD4" EntityType="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" sap:content-version="1"/>
+                <EntitySet Name="ZAB_C_DEVHUB_IT4" EntityType="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" sap:content-version="1"/>
+                <AssociationSet Name="assoc_B998AF0FF5AA42BFD6231EC91769D853" Association="ZAB_C_DEVHUB_HD4_CDS.assoc_B998AF0FF5AA42BFD6231EC91769D853" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAB_C_DEVHUB_HD4" Role="FromRole_assoc_B998AF0FF5AA42BFD6231EC91769D853"/>
+                    <End EntitySet="ZAB_C_DEVHUB_IT4" Role="ToRole_assoc_B998AF0FF5AA42BFD6231EC91769D853"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_668D6AC897131A4942DA9265E9E64DD8" Association="ZAB_C_DEVHUB_HD4_CDS.assoc_668D6AC897131A4942DA9265E9E64DD8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAB_C_DEVHUB_HD4" Role="FromRole_assoc_668D6AC897131A4942DA9265E9E64DD8"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_668D6AC897131A4942DA9265E9E64DD8"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_423F1558871634BEAB4FBEB33DE29140" Association="ZAB_C_DEVHUB_HD4_CDS.assoc_423F1558871634BEAB4FBEB33DE29140" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAB_C_DEVHUB_IT4" Role="FromRole_assoc_423F1558871634BEAB4FBEB33DE29140"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_423F1558871634BEAB4FBEB33DE29140"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_17F528AD10CFAA4A854046834D2279C7" Association="ZAB_C_DEVHUB_HD4_CDS.assoc_17F528AD10CFAA4A854046834D2279C7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAB_C_DEVHUB_IT4" Role="FromRole_assoc_17F528AD10CFAA4A854046834D2279C7"/>
+                    <End EntitySet="ZAB_C_DEVHUB_IT4" Role="ToRole_assoc_17F528AD10CFAA4A854046834D2279C7"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_245F77D463CEFB00CAE5A025D32895F0" Association="ZAB_C_DEVHUB_HD4_CDS.assoc_245F77D463CEFB00CAE5A025D32895F0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZAB_C_DEVHUB_HD4" Role="FromRole_assoc_245F77D463CEFB00CAE5A025D32895F0"/>
+                    <End EntitySet="ZAB_C_DEVHUB_HD4" Role="ToRole_assoc_245F77D463CEFB00CAE5A025D32895F0"/>
+                </AssociationSet>
+                <FunctionImport Name="ZAB_C_DEVHUB_HD4Activation" ReturnType="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" EntitySet="ZAB_C_DEVHUB_HD4" m:HttpMethod="POST" sap:action-for="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" sap:applicable-path="Activation_ac">
+                    <Parameter Name="zt_name" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                </FunctionImport>
+                <FunctionImport Name="ZAB_C_DEVHUB_HD4Edit" ReturnType="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" EntitySet="ZAB_C_DEVHUB_HD4" m:HttpMethod="POST" sap:action-for="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" sap:applicable-path="Edit_ac">
+                    <Parameter Name="zt_name" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZAB_C_DEVHUB_HD4Preparation" ReturnType="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" EntitySet="ZAB_C_DEVHUB_HD4" m:HttpMethod="POST" sap:action-for="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="zt_name" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZAB_C_DEVHUB_HD4Validation" ReturnType="ZAB_C_DEVHUB_HD4_CDS.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type" sap:applicable-path="Validation_ac">
+                    <Parameter Name="zt_name" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZAB_C_DEVHUB_IT4Preparation" ReturnType="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" EntitySet="ZAB_C_DEVHUB_IT4" m:HttpMethod="POST" sap:action-for="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" sap:applicable-path="Preparation_ac">
+                    <Parameter Name="zuniqnum" Type="Edm.Int16" Mode="In"/>
+                    <Parameter Name="zt_name" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+                <FunctionImport Name="ZAB_C_DEVHUB_IT4Validation" ReturnType="ZAB_C_DEVHUB_HD4_CDS.ValidationFunctionResult" m:HttpMethod="GET" sap:action-for="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type" sap:applicable-path="Validation_ac">
+                    <Parameter Name="zuniqnum" Type="Edm.Int16" Mode="In"/>
+                    <Parameter Name="zt_name" Type="Edm.String" Mode="In" MaxLength="50"/>
+                    <Parameter Name="DraftUUID" Type="Edm.Guid" Mode="In"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In"/>
+                    <Parameter Name="SideEffectsQualifier" Type="Edm.String" Mode="In" Nullable="true"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_HD4">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_HD4Activation"/>
+                        <PropertyValue Property="EditAction" String="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_HD4Edit"/>
+                        <PropertyValue Property="PreparationAction" String="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_HD4Preparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_HD4Validation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>HasActiveEntity</PropertyPath>
+                                <PropertyPath>HasDraftEntity</PropertyPath>
+                                <PropertyPath>IsActiveEntity</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="zt_segment"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Activation_ac</PropertyPath>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>zt_segment</PropertyPath>
+                                <PropertyPath>HasActiveEntity</PropertyPath>
+                                <PropertyPath>HasDraftEntity</PropertyPath>
+                                <PropertyPath>IsActiveEntity</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_IT4">
+                <Annotation Term="Common.DraftNode">
+                    <Record>
+                        <PropertyValue Property="PreparationAction" String="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_IT4Preparation"/>
+                        <PropertyValue Property="ValidationFunction" String="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_IT4Validation"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4_CDS_Entities/ZAB_C_DEVHUB_HD4</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>ParentDraftUUID</PropertyPath>
+                                <PropertyPath>HasActiveEntity</PropertyPath>
+                                <PropertyPath>HasDraftEntity</PropertyPath>
+                                <PropertyPath>IsActiveEntity</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="zsubtopic"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="ztopic_infotype"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SearchExpression"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Preparation_ac</PropertyPath>
+                                <PropertyPath>Validation_ac</PropertyPath>
+                                <PropertyPath>zsubtopic</PropertyPath>
+                                <PropertyPath>ztopic_infotype</PropertyPath>
+                                <PropertyPath>ParentDraftUUID</PropertyPath>
+                                <PropertyPath>HasActiveEntity</PropertyPath>
+                                <PropertyPath>HasDraftEntity</PropertyPath>
+                                <PropertyPath>IsActiveEntity</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_HD4Type">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>zt_name</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="ZAB_C_DEVHUB_HD4_CDS.ZAB_C_DEVHUB_IT4Type">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>zuniqnum</PropertyPath>
+                        <PropertyPath>zt_name</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/ZAB_C_DEVHUB_HD4_CDS/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/ZAB_C_DEVHUB_HD4_CDS/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
